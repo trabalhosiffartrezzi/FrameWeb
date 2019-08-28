@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFiladomateTable extends Migration
+class CreateFilaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFiladomateTable extends Migration
      */
     public function up()
     {
-        Schema::create('filadomate', function (Blueprint $table) {
+        Schema::create('fila', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->timestamps();
             $table->string('Local');
-            $table->interger('qtdepessoas');
+            $table->integer('qtdepessoas');
             $table->string('administrador');
             $table->string('status');
             $table->string('nomeFila');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateFiladomateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filadomate');
+        Schema::dropIfExists('fila');
     }
 }
