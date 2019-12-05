@@ -1,12 +1,13 @@
 @extends('admin/base')
-
 @section('title', 'Pag POSTS')
 
 @section('content')
 
-	<h1>Lista de posts</h1>
+	<h1>LISTA DE POSTS</h1>
+	
 	<a href="{{url('admin/posts/create')}}" class="btn btn-primary">Novo Post</a>
-	<table class="table">
+
+	<table class='table'>
 		<thead>
 			<th>#</th>
 			<th>Título</th>
@@ -14,7 +15,7 @@
 			<th>Ações</th>
 		</thead>
 		<tbody>
-			@foreach($posts as $post)
+		@foreach($posts as $post)
 			<tr>
 				<td>{{$post->id}}</td>
 				<td>{{$post->titulo}}</td>
@@ -22,13 +23,15 @@
 				<td>
 					<a href="{{url('admin/posts/'.$post->id.'/edit')}}">Editar</a>
 					<form method="post" action="{{url('admin/posts/'.$post->id)}}">
-						{{ csrf_field() }}
+						@csrf
+
 						<input type="hidden" name="_method" value="DELETE">
-						<button type="submit">Excluir</button>
+						<button type='submit'>Excluir</button>
 					</form>
 				</td>
 			</tr>
-			@endforeach
+			
+		@endforeach
 		</tbody>
 	</table>
 @endsection
